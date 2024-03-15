@@ -1,0 +1,51 @@
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  version: "default"
+  importDerivedRoles:
+    - profile-roles
+  resource: employer_profile
+  rules:
+    - actions: ["view"]
+      roles:
+        - agency-profile-admin
+        - employer-admin
+      derivedRoles:
+        - profile-reader
+      effect: EFFECT_ALLOW
+    - actions: [ "list" ]
+      roles:
+        - agency-profile-admin
+        - employer-admin
+      effect: EFFECT_ALLOW
+    - actions: [ "update" ]
+      roles:
+        - agency-profile-admin
+        - employer-admin
+      derivedRoles:
+        - profile-writer
+        - profile-admin
+      effect: EFFECT_ALLOW
+    - actions: [ "create" ]
+      roles:
+        - agency-profile-admin
+      effect: EFFECT_ALLOW
+    - actions: [ "invite" ]
+      roles:
+        - agency-profile-admin
+      derivedRoles:
+        - profile-admin
+      effect: EFFECT_ALLOW
+    - actions: [ "link" ]
+      roles:
+        - agency-profile-admin
+        - employer-admin
+      derivedRoles:
+        - profile-admin
+      effect: EFFECT_ALLOW
+    - actions: [ "delete-link" ]
+      roles:
+        - agency-profile-admin
+        - employer-admin
+      derivedRoles:
+        - profile-admin
+      effect: EFFECT_ALLOW
